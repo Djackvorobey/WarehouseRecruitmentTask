@@ -1,0 +1,92 @@
+﻿<Page x:Class="TMA.Warehouse.Views.Pages.GoodsPage"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:enums="clr-namespace:TMA.Warehouse.Models.Enums;assembly=TMA.Warehouse"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TMA.Warehouse.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="GoodsPage">
+
+    <Page.Resources>
+        <DataTemplate x:Key="GoodsEmployeeTemplate">
+            <StackPanel>
+                <DataGrid ItemsSource="{Binding Items}" AutoGenerateColumns="False" CanUserAddRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Item Name" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="Unit of measurement" Binding="{Binding UnitOfMeasurement}"/>
+                        <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
+                        <DataGridTextColumn Header="Price without VAT (UAH)" Binding="{Binding PriceWithoutVAT}"/>
+                        <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Create Order"
+                                            Command="{Binding DataContext.OrderCommand, RelativeSource={RelativeSource AncestorType=Page}}" 
+                                            CommandParameter="{Binding }" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button Content="Back"
+                        Command="{Binding DataContext.BackCommand, RelativeSource={RelativeSource AncestorType=Page}}" Width="244" Height="50" Margin="0,24,0,0"/>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="GoodsCoordinatorTemplate">
+            <StackPanel>
+                <DataGrid ItemsSource="{Binding Items}" AutoGenerateColumns="False" CanUserAddRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Item Name" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Item Name" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="Unit of measurement" Binding="{Binding UnitOfMeasurement}"/>
+                        <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
+                        <DataGridTextColumn Header="Price without VAT (UAH)" Binding="{Binding PriceWithoutVAT}"/>
+                        <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Update" 
+                                            Command="{Binding DataContext.UpdateCommand, RelativeSource={RelativeSource AncestorType=Page}}" 
+                                            CommandParameter="{Binding }" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Remove" 
+                                            Command="{Binding DataContext.RemoveCommand, RelativeSource={RelativeSource AncestorType=Page}}" 
+                                            CommandParameter="{Binding }"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button Content="Add product" 
+                        Command="{Binding DataContext.AddCommand, RelativeSource={RelativeSource AncestorType=StackPanel}}" Width="244" Height="50" Margin="0,24,0,0"/>
+                <Button Content="Back"
+                        Command="{Binding DataContext.BackCommand, RelativeSource={RelativeSource AncestorType=Page}}" Width="244" Height="50" Margin="0,24,0,0"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+
+    <ContentControl Content="{Binding}">
+        <ContentControl.Style>
+            <Style TargetType="ContentControl">
+                <Setter Property="ContentTemplate" Value="{StaticResource GoodsEmployeeTemplate}" />
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding MyUser.RoleEnum}" Value="{x:Static enums:Enums+RoleEnums.Coordinator}">
+                        <Setter Property="ContentTemplate" Value="{StaticResource GoodsCoordinatorTemplate}" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding MyUser.RoleEnum}" Value="{x:Static enums:Enums+RoleEnums.Administrator}">
+                        <Setter Property="ContentTemplate" Value="{StaticResource GoodsCoordinatorTemplate}" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </ContentControl.Style>
+    </ContentControl>
+</Page>

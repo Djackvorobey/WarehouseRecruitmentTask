@@ -1,0 +1,89 @@
+﻿<Page x:Class="TMA.Warehouse.Views.Pages.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TMA.Warehouse.Views.Pages"
+      xmlns:enums="clr-namespace:TMA.Warehouse.Models.Enums"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="HomePage">
+    <Page.Resources>
+        <DataTemplate x:Key="HomeEmployeeTemplate">
+            <Border Background="AliceBlue" MinWidth="800" Margin="200" CornerRadius="50" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="40">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
+                </Border.Effect>
+                <StackPanel>
+                    <TextBlock Text="{Binding WelcomeMessage}" FontSize="32" Margin="0,14,0,0" />
+                    <Button Content="Your orders" Margin="0,14,0,0"
+                            Command="{Binding DataContext.OrdersCommand, RelativeSource={RelativeSource AncestorType=Page}}" 
+                            CommandParameter="{Binding }"/>
+                    <Button Content="Logout" Margin="0,14,0,0"
+                            Command="{Binding DataContext.LogoutCommand, RelativeSource={RelativeSource AncestorType=Page}}" 
+                            CommandParameter="{Binding }"/>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="HomeCoordinatorTemplate">
+            <Border Background="AliceBlue" MinWidth="800" Margin="200" CornerRadius="50" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="40">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
+                </Border.Effect>
+                <StackPanel>
+                    <TextBlock Text="{Binding WelcomeMessage}" FontSize="32" Margin="0,14,0,0" />
+                    <Button Content="Purchase Requests" Margin="0,14,0,0"
+                            Command="{Binding DataContext.OrdersCommand, RelativeSource={RelativeSource AncestorType=Page}}" 
+                            CommandParameter="{Binding }"/>
+                    <Button Content="List of goods" Margin="0,14,0,0"
+                            Command="{Binding DataContext.GoodsCommand, RelativeSource={RelativeSource AncestorType=Page}}" 
+                            CommandParameter="{Binding }"/>
+                    <Button Content="Logout" Margin="0,14,0,0"
+                            Command="{Binding DataContext.LogoutCommand, RelativeSource={RelativeSource AncestorType=Page}}" 
+                            CommandParameter="{Binding }"/>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="HomeAdministratorTemplate">
+            <Border Background="AliceBlue" MinWidth="800" Margin="200" CornerRadius="50" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="40">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
+                </Border.Effect>
+                <StackPanel>
+                    <TextBlock Text="{Binding WelcomeMessage}" FontSize="32" Margin="0,14,0,0" />
+                    <Button Content="Purchase Requests" Margin="0,14,0,0"
+                            Command="{Binding DataContext.OrdersCommand, RelativeSource={RelativeSource AncestorType=Page}}" 
+                            CommandParameter="{Binding }"/>
+                    <Button Content="List of goods" Margin="0,14,0,0"
+                            Command="{Binding DataContext.GoodsCommand, RelativeSource={RelativeSource AncestorType=Page}}" 
+                            CommandParameter="{Binding }"/>
+                    <Button Content="Users management" Margin="0,14,0,0"
+                            Command="{Binding DataContext.RolesCommand, RelativeSource={RelativeSource AncestorType=Page}}" 
+                            CommandParameter="{Binding }"/>
+                    <Button Content="Logout" Margin="0,14,0,0"
+                            Command="{Binding DataContext.LogoutCommand, RelativeSource={RelativeSource AncestorType=Page}}" 
+                            CommandParameter="{Binding }"/>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
+
+    <ContentControl Content="{Binding}">
+        <ContentControl.Style>
+            <Style TargetType="ContentControl">
+                <Setter Property="ContentTemplate" Value="{StaticResource HomeEmployeeTemplate}" />
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding MyUser.RoleEnum}" Value="{x:Static enums:Enums+RoleEnums.Employee}">
+                        <Setter Property="ContentTemplate" Value="{StaticResource HomeEmployeeTemplate}" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding MyUser.RoleEnum}" Value="{x:Static enums:Enums+RoleEnums.Coordinator}">
+                        <Setter Property="ContentTemplate" Value="{StaticResource HomeCoordinatorTemplate}" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding MyUser.RoleEnum}" Value="{x:Static enums:Enums+RoleEnums.Administrator}">
+                        <Setter Property="ContentTemplate" Value="{StaticResource HomeAdministratorTemplate}" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </ContentControl.Style>
+    </ContentControl>
+</Page>

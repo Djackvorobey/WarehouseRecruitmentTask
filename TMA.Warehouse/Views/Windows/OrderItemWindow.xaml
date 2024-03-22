@@ -1,0 +1,28 @@
+﻿<Window x:Class="TMA.Warehouse.Views.Windows.OrderItemWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TMA.Warehouse.Views.Windows"
+        mc:Ignorable="d"
+        Title="OrderItemWindow" Height="450" Width="800">
+    <Grid>
+        <Label Content="Create Order" FontSize="32" HorizontalAlignment="Center"></Label>
+        <Border Background="Azure" Margin="25,50,25,25">
+            <StackPanel>
+                <Label Content="Item name" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBlock x:Name="ItemNameBox"></TextBlock>
+                <Label Content="Unit Of Measurement" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBlock x:Name="MeasurementBox"/>
+                <Label Content="Quantity" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="QuantityBox"></TextBox>
+                <Label Content="Price Without VAT" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBlock x:Name="PriceWithoutVatBox"></TextBlock>
+                <Label Content="Comment" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="CommentBox"></TextBox>
+                <Button x:Name="SendOrderButton" Content="Create Order" Click=" SendOrderButton_OnClick" Margin="50,6,50,0"></Button>
+                <Button x:Name="CancelButton" Content="Cancel" Click="CancelButton_OnClick" Margin="50,6,50,0"></Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

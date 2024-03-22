@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMA.Warehouse", "TMA.Warehouse\TMA.Warehouse.csproj", "{79293221-F0D9-48EC-8327-2EA46F2F7B91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMA.Warehouse.Api", "TMA.Warehouse.Api\TMA.Warehouse.Api.csproj", "{D6BFB066-23DF-433D-8381-67E7ED3BB25F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79293221-F0D9-48EC-8327-2EA46F2F7B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79293221-F0D9-48EC-8327-2EA46F2F7B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79293221-F0D9-48EC-8327-2EA46F2F7B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79293221-F0D9-48EC-8327-2EA46F2F7B91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6BFB066-23DF-433D-8381-67E7ED3BB25F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6BFB066-23DF-433D-8381-67E7ED3BB25F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6BFB066-23DF-433D-8381-67E7ED3BB25F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6BFB066-23DF-433D-8381-67E7ED3BB25F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5806FE62-2428-4B75-AA3A-F6DF056E5D70}
+	EndGlobalSection
+EndGlobal

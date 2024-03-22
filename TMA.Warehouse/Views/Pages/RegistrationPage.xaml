@@ -1,0 +1,28 @@
+﻿<Page x:Class="TMA.Warehouse.Views.Pages.RegistrationPage"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TMA.Warehouse.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="RegistrationPage">
+
+    <Grid Background="White">
+        <Border Background="AliceBlue" MinWidth="800" Margin="200" CornerRadius="50" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="40">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
+            </Border.Effect>
+            <StackPanel>
+                <TextBlock Text="Registration" FontSize="32"></TextBlock>
+                <TextBox x:Name="NameBox" materialDesign:HintAssist.Hint="Your Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Height="50" Margin="0,14,0,0"></TextBox>
+                <TextBlock Text="Choose Role" Margin="0,14,0,0"></TextBlock>
+                <ComboBox x:Name="RolesComboBox" Text="Choose Role" Margin="0,14,0,0" ItemsSource="{Binding MyEnumValues}" SelectedItem="{Binding SelectedEnum}" Style="{StaticResource MaterialDesignComboBox}"/>
+                <Grid>
+                    <Button x:Name="RegisterButton" Content="Register" Margin="0,14,0,0" Click="RegisterButton_OnClick" ></Button>
+                </Grid>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>
